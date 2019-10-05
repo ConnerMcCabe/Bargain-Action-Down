@@ -1,6 +1,6 @@
 import tokenService from './tokenService';
 
-const BASE_URL = '/api';
+const BASE_URL = '/api/';
 //if it breaks this is why
 
 function signup(user) {
