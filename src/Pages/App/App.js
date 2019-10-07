@@ -5,9 +5,9 @@ import { Route, Switch } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
-import tokenService from '../../utils/tokenService';
-import NavBar from '../../Components/NavBar/NavBar'
-
+// import tokenService from '../../utils/tokenService';
+import NavBar from '../../Components/NavBar/NavBar';
+import FormAction from '../../Components/Form/Form';
 
 class App extends Component {
   constructor() {
@@ -32,11 +32,14 @@ render() {
       <h1>Bargain</h1>
       <Switch>
         <Route exact path='/' render={() =>
-          <NavBar 
-            user={this.state.user}
-            handleLogout={this.handleLogout}
-          />
-        }/>
+          <>
+            <NavBar 
+              user={this.state.user}
+              handleLogout={this.handleLogout}
+            />
+            <FormAction />
+          </>
+          }/>
         <Route exact path='/signup' render={({ history }) => 
             <SignupPage
               history={history}
@@ -51,6 +54,7 @@ render() {
           }/>
         
       </Switch>
+        
     </div>
   );
 }
