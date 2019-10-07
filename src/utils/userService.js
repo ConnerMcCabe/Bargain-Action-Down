@@ -12,7 +12,7 @@ function signup(user) {
   .then(res => {
     if (res.ok) return res.json();
     // Probably a duplicate email
-    throw new Error('Email already taken! test');
+    throw new Error('Email already taken!');
   })
   // Parameter destructuring!
   .then(({token}) => tokenService.setToken(token));

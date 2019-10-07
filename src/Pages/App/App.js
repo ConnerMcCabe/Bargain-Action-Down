@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
-// import tokenService from '../../utils/tokenService';
+import tokenService from '../../utils/tokenService';
 import NavBar from '../../Components/NavBar/NavBar'
 
 
