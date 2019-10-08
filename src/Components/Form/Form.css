@@ -19,7 +19,7 @@ article > div {
   
 article > div:nth-child(2) {
   width: 4rem;
-  background-color: #f17d80;
+  background-color: #737495;
   text-align: center;
 }
   
@@ -54,7 +54,7 @@ button {
   font-size: 1rem;
   margin: 0.5rem 0 0 auto;
   padding: 0.4rem;
-  background-color: #f17d80;
+  background-color: #737495;
   color: white;
   border: none;
   outline: none;

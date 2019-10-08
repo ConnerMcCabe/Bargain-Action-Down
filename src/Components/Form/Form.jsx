@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-// import userService from "../../utils/userService";
+
 import "./Form.css";
-// import { async } from 'q';
+
 
 class FormAction extends Component {
   state = {
@@ -25,17 +25,17 @@ class FormAction extends Component {
   addAct = async (e) => {
     e.preventDefault();
     if (!this.formRef.current.checkValidity()) return;
+    await this.updateActions(this.state.acts, this.props.user._id);
     await this.setState(state => ({
       acts: [...state.acts, state.newAct],
       newAct: {act: '', score: 'FREE'}
     }))
-    await this.updateActions(this.state.acts, this.props.user._id);
   };
   removeAct = async (index,user) => {
     const acts = this.state.acts;
     acts.splice(index, 1);
-    this.setState({ acts })
     await this.updateActions(acts, user);
+    this.setState({ acts })
   };
   updateActions = (act , idx) => {
     return fetch(`/api/updateAction/${idx}`, {
