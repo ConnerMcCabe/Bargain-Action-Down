@@ -5,7 +5,7 @@ import "./Form.css";
 
 class FormAction extends Component {
   state = {
-    acts: [...this.props.user.activity],
+    acts: [{ act: "> Take a Lyft", score: "$10" }],
     newAct : {
       act: "",
       score: "FREE"
@@ -25,8 +25,7 @@ class FormAction extends Component {
   addAct = async (e) => {
     e.preventDefault();
     if (!this.formRef.current.checkValidity()) return;
-    await this.updateActions(this.state.acts, this.props.user._id);
-    await this.setState(state => ({
+    this.setState(state => ({
       acts: [...state.acts, state.newAct],
       newAct: {act: '', score: 'FREE'}
     }))
@@ -41,11 +40,11 @@ class FormAction extends Component {
     return fetch(`/api/updateAction/${idx}`, {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
-      body: JSON.stringify(...act)
+      body: JSON.stringify(act)
     }).then(res=>{res.json()})
-  };
-
+  }
   render() {
+    
     return (
       <section>
         <hr />

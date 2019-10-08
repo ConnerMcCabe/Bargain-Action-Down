@@ -46,10 +46,9 @@ function createJWT(user) {
   );
 };
 async function updateAct(req, res) {
-  const udUser = await User.findById(req.params.id).then(person => {
-    person.activity = [...req.body]
+   await User.findById(req.params.id).then(person => {
+    person.activity =[...req.body]
     person.save()
     res.status(200)
   })
-  console.log(udUser)
 }
