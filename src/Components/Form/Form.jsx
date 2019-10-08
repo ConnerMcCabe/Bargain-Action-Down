@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import userService from "../../utils/userService";
+// import userService from "../../utils/userService";
 import "./Form.css";
+// import { async } from 'q';
 
 class FormAction extends Component {
   state = {
@@ -21,24 +22,25 @@ class FormAction extends Component {
       formInvalid: !this.formRef.current.checkValidity()
     });
   };
-  addAct = e => {
+  addAct = async (e) => {
     e.preventDefault();
     if (!this.formRef.current.checkValidity()) return;
     this.setState(state => ({
       acts: [...state.acts, state.newAct],
       newAct: {act: '', score: 'FREE'}
     }))
-    this.updateActions(this.state.acts,this.user._id);
+    await this.updateActions(this.state.acts,this.user._id);
   };
-  removeAct = index => {
+  removeAct = async (index) => {
     const acts = this.state.acts;
     acts.splice(index, 1);
     this.setState({ acts })
-    this.updateActions(acts,this.user._id);
+    await this.updateActions(acts,this.user._id);
   };
   updateActions = (act , idx) => {
+    console.log('you rang?');
     return fetch(`/api/updateAction/${idx}`, {
-      method: 'PUT',
+      method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
       body: JSON.stringify(act)
     }).then(res=>{res.json()})
