@@ -32,7 +32,6 @@ render() {
     <div>
       <h1>Bargain</h1>
       <Switch>
-        
         <Route exact path='/' render={() =>
           <>
             <NavBar 
@@ -40,8 +39,12 @@ render() {
               handleLogout={this.handleLogout}
             />
             {this.state.user ? 
-            <><ScoreBoard /><FormAction />
-            </> : <h1>Log In</h1>}
+            <><ScoreBoard />
+            <FormAction 
+            user = {this.state.user}
+            />
+            </> 
+            : <h1>Log In</h1>}
           </>
           }/>
         <Route exact path='/signup' render={({ history }) => 
