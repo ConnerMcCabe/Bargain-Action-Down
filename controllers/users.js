@@ -4,7 +4,8 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  updateAct
 };
 
 async function signup(req, res) {
@@ -43,4 +44,8 @@ function createJWT(user) {
     SECRET,
     {expiresIn: '24h'}
   );
+};
+async function updateAct(req, res) {
+  const udUser = await User.findById(req.params.id, {activity:[...req.body]}, {new:true} )
+res.status(200).json(udUser);
 }

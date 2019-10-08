@@ -11,8 +11,8 @@ class SignupForm extends Component {
     email: '',
     password: '',
     passwordConf: '',
-    // activity: [],
-    // score: 0
+    activity: [],
+    
   };
 
   handleChange = (e) => {

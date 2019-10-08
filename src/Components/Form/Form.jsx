@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import userService from "../../utils/userService";
 import "./Form.css";
 
 class FormAction extends Component {
@@ -28,12 +28,21 @@ class FormAction extends Component {
       acts: [...state.acts, state.newAct],
       newAct: {act: '', score: 'FREE'}
     }))
+    this.updateActions(this.state.acts,this.user._id);
   };
   removeAct = index => {
     const acts = this.state.acts;
     acts.splice(index, 1);
     this.setState({ acts })
+    this.updateActions(acts,this.user._id);
   };
+  updateActions = (act , idx) => {
+    return fetch(`/api/updateAction/${idx}`, {
+      method: 'PUT',
+      headers: new Headers({'Content-Type': 'application/json'}),
+      body: JSON.stringify(act)
+    }).then(res=>{res.json()})
+  }
   render() {
     
     return (

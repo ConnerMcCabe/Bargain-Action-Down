@@ -8,6 +8,7 @@ import userService from '../../utils/userService';
 // import tokenService from '../../utils/tokenService';
 import NavBar from '../../Components/NavBar/NavBar';
 import FormAction from '../../Components/Form/Form';
+import ScoreBoard from '../../Components/ScoreBoard/ScoreBoard';
 
 class App extends Component {
   constructor() {
@@ -31,13 +32,16 @@ render() {
     <div>
       <h1>Bargain</h1>
       <Switch>
+        
         <Route exact path='/' render={() =>
           <>
             <NavBar 
               user={this.state.user}
               handleLogout={this.handleLogout}
             />
-            <FormAction />
+            {this.state.user ? 
+            <><ScoreBoard /><FormAction />
+            </> : <h1>Log In</h1>}
           </>
           }/>
         <Route exact path='/signup' render={({ history }) => 
