@@ -5,7 +5,7 @@ import "./Form.css";
 
 class FormAction extends Component {
   state = {
-    acts: [{ act: "> Take a Lyft", score: "$10" }],
+    acts: this.props.user.activity,
     newAct : {
       act: "",
       score: "FREE"
@@ -25,25 +25,20 @@ class FormAction extends Component {
   addAct = async (e) => {
     e.preventDefault();
     if (!this.formRef.current.checkValidity()) return;
-    this.setState(state => ({
+    await this.setState(state => ({
       acts: [...state.acts, state.newAct],
       newAct: {act: '', score: 'FREE'}
     }))
-    await this.updateActions(this.state.acts, this.props.user._id);
+    await this.props.updateActions(this.state.acts);
   };
-  removeAct = async (index,user) => {
+  removeAct = async (index) => {
     const acts = this.state.acts;
     acts.splice(index, 1);
     this.setState({ acts })
-    await this.updateActions(acts, user);
+    await this.props.updateActions(acts);
   };
-  updateActions = (act , idx) => {
-    return fetch(`/api/updateAction/${idx}`, {
-      method: 'POST',
-      headers: new Headers({'Content-Type': 'application/json'}),
-      body: JSON.stringify(act)
-    }).then(res=>{res.json()})
-  }
+
+
   render() {
     
     return (
@@ -51,8 +46,9 @@ class FormAction extends Component {
         <hr />
         {this.state.acts.map((s, idx) => (
           <article key={idx}>
-            <div>{s.act}</div> <div>{s.score}</div>
-            <button class="formBtn" onClick={() => this.removeAct(idx,this.props.user._id)}>X</button>
+            <div>{s.act}</div> 
+            <div>{s.score}</div>
+            <button class="formBtn" onClick={() => this.removeAct(idx)}>X</button>
           </article>
            
         ))}
@@ -84,6 +80,7 @@ class FormAction extends Component {
             </select>
           </label>
           <button 
+            className="submit"
             disabled={this.state.formInvalid}  
           >ADD ACTIVITY</button>
         </form>

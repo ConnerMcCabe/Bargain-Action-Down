@@ -26,6 +26,18 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
+  updateActions = (act) => {
+    this.setState(
+      {
+        user:{activity:[...act]} 
+      });
+      console.log(this.state.user._id)
+    return fetch(`/api/updateAction/${this.state.user._id}`, {
+      method: 'POST',
+      headers: new Headers({'Content-Type': 'application/json'}),
+      body: JSON.stringify(act)
+    }).then(res=>{res.json()})
+  }
 
 render() {
   return (
@@ -42,6 +54,7 @@ render() {
             <><ScoreBoard />
             <FormAction 
             user = {this.state.user}
+            updateActions = {this.updateActions}
             />
             </> 
             : <h1>Log In</h1>}
