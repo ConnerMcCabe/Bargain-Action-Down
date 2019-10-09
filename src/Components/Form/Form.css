@@ -1,28 +1,13 @@
-h2 {
-  color: #f17d80;
-  margin: 0;
-  text-align: center;
-}
-  
-section > article {
+article {
   display: flex;
   justify-content: space-between;
-  min-width: 15rem;
-  color: white;
+  align-items: center;
+  width: 80vw;
+  height: 5vh;
+  color: #f9d01c;
   margin: 0.1rem;
-  background-color: #737495;
-}
-  
-article > div {
-  padding: 0.5rem;
-}
-  
-article > div:nth-child(2) {
-  width: 4rem;
-  background-color: #737495;
-  text-align: center;
-}
-  
+  background-color: #000000;
+} 
 label {
   display: flex;
   align-items: center;
@@ -30,7 +15,7 @@ label {
 }
   
 label span {
-  color: #737495;
+  color: #000000;
   width: 2rem;
 }
   
@@ -41,8 +26,8 @@ select {
   font-size: 1rem;
   font-weight: bold;
   padding: 0.4rem;
-  color: #f17d80;
-  border: 2px solid #737495;
+  color: #1d1d1c;
+  border: 2px solid #f5da42;
   border-radius: 0;
   outline: none;
   -webkit-appearance: none;
@@ -52,10 +37,8 @@ button {
   display: block;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  margin: 0.5rem 0 0 auto;
-  padding: 0.4rem;
-  background-color: #737495;
-  color: white;
+  background-color: #f9d01c;
+  color: rgb(0, 0, 0);
   border: none;
   outline: none;
 }
@@ -63,6 +46,11 @@ button:disabled {
   background-color: lightgrey;
 }
 button:hover {
-  color: white;
-  background-color: #737495;
+  color: #f9d01c;
+  background-color: #000000;
+}
+.submit
+{
+  margin: 0.5rem 0 0 auto;
+  padding: 0.4rem;
 }
