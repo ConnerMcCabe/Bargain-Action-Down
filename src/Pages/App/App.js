@@ -14,7 +14,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: userService.getUser()
+      user: userService.getUser(),
+      activity: []
     };
   }
 
@@ -26,13 +27,13 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
-  updateActions = (act) => {
+  updateActions = (act , idx) => {
     this.setState(
       {
-        user:{activity:[...act]} 
+        activity:[...act]
       });
-      console.log(this.state.user._id)
-    return fetch(`/api/updateAction/${this.state.user._id}`, {
+      console.log(idx);
+    return fetch(`/api/updateAction/${idx}`, {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
       body: JSON.stringify(act)
