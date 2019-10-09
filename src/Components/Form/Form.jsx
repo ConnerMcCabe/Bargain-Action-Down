@@ -29,13 +29,13 @@ class FormAction extends Component {
       acts: [...state.acts, state.newAct],
       newAct: {act: '', score: 'FREE'}
     }))
-    await this.props.updateActions(this.state.acts);
+    await this.props.updateActions(this.state.acts, this.props.user._id);
   };
-  removeAct = async (index) => {
+  removeAct = async (index,user) => {
     const acts = this.state.acts;
     acts.splice(index, 1);
     this.setState({ acts })
-    await this.props.updateActions(acts);
+    await this.props.updateActions(acts, user);
   };
 
 
@@ -48,7 +48,7 @@ class FormAction extends Component {
           <article key={idx}>
             <div>{s.act}</div> 
             <div>{s.score}</div>
-            <button class="formBtn" onClick={() => this.removeAct(idx)}>X</button>
+            <button class="formBtn" onClick={() => this.removeAct(idx,this.props.user._id)}>X</button>
           </article>
            
         ))}
