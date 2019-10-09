@@ -57,4 +57,4 @@ async function findUser(req, res) {
   await User.findById(req.params.id).then(person => {
     res.status(200).json(person.activity)
   })
- }
+}
