@@ -32,14 +32,12 @@ class App extends Component {
       {
         activity:[...act]
       });
-      console.log(idx);
-    return fetch(`/api/updateAction/${idx}`, {
+      return fetch(`/api/updateAction/${idx}`, {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
       body: JSON.stringify(act)
     }).then(res=>{res.json()})
   }
-
 render() {
   return (
     <div>
@@ -80,7 +78,6 @@ render() {
   );
 }
 }
-
 
 
 export default App;

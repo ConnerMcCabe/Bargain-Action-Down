@@ -38,6 +38,14 @@ class FormAction extends Component {
     await this.props.updateActions(acts, user);
   };
 
+  async componentDidMount()
+  {
+    const rep = await fetch(`/api/user/${this.props.user._id}`);
+    const data = await rep.json();
+    this.setState({
+      acts: [...data]
+    });
+  }
 
   render() {
     
