@@ -15,7 +15,8 @@ class App extends Component {
     super();
     this.state = {
       user: userService.getUser(),
-      activity: []
+      activity: [],
+      total: 0
     };
   }
 
@@ -38,6 +39,22 @@ class App extends Component {
       body: JSON.stringify(act)
     }).then(res=>{res.json()})
   }
+  componentDidMount() {
+    var tots = 0
+    this.state.activity.map(act => {
+      if(!isNaN(parseInt(act.score)))
+    {
+      tots += parseInt(act.score);
+    }
+      console.log(tots);
+      console.log(parseInt(act.score))
+    })
+      this.setState({
+        total: tots
+      })
+  }
+
+
 render() {
   return (
     <div>
@@ -49,10 +66,12 @@ render() {
               handleLogout={this.handleLogout}
             />
             {this.state.user ? 
-            <><ScoreBoard />
+            <><ScoreBoard 
+              total={this.state.total}
+            />
             <FormAction 
-            user = {this.state.user}
-            updateActions = {this.updateActions}
+              user = {this.state.user}
+              updateActions = {this.updateActions}
             />
             </> 
             : <h1>Log In</h1>}
