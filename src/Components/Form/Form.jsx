@@ -45,6 +45,7 @@ class FormAction extends Component {
     this.setState({
       acts: [...data]
     });
+    this.props.updateActions([...data],this.props.user._id);
   }
 
   render() {

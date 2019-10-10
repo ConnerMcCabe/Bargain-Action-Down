@@ -6,7 +6,7 @@ class ScoreBoard extends Component {
 
     return (
       <div>
-        <h1>Total : {this.props.total}</h1>
+        <h1>Total Savings: S{this.props.total}</h1>
       </div>
     );
   }  

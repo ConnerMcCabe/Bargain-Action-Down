@@ -28,26 +28,27 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
-  updateActions = (act , idx) => {
-    this.setState(
+  updateActions = async (act , idx) => {
+   await this.setState(
       {
         activity:[...act]
       });
+     await this.SetTotal();
       return fetch(`/api/updateAction/${idx}`, {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
       body: JSON.stringify(act)
     }).then(res=>{res.json()})
   }
-  componentDidMount() {
+  SetTotal() {
     var tots = 0
     this.state.activity.map(act => {
-      if(!isNaN(parseInt(act.score)))
+      var newscore = act.score.replace('$', '')
+      newscore = parseInt(newscore)
+      if(newscore)
     {
-      tots += parseInt(act.score);
+      tots += newscore;
     }
-      console.log(tots);
-      console.log(parseInt(act.score))
     })
       this.setState({
         total: tots
