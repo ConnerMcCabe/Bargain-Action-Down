@@ -67,15 +67,17 @@ render() {
               handleLogout={this.handleLogout}
             />
             {this.state.user ? 
-            <><ScoreBoard 
+            <main>
+              <FormAction 
+                user = {this.state.user}
+                updateActions = {this.updateActions}
+              />
+            <ScoreBoard 
               total={this.state.total}
             />
-            <FormAction 
-              user = {this.state.user}
-              updateActions = {this.updateActions}
-            />
-            </> 
-            : <h1>Log In</h1>}
+            </main> 
+            :
+            <h1>Log In</h1>}
           </>
           }/>
         <Route exact path='/signup' render={({ history }) => 

@@ -26,3 +26,8 @@
 .App-link {
   color: #09d3ac;
 }
+main 
+{
+  display: flex;
+  justify-content: space-around;
+}
