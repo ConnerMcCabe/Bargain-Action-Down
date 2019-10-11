@@ -28,6 +28,7 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
+
   updateActions = async (act , idx) => {
    await this.setState(
       {
@@ -40,6 +41,7 @@ class App extends Component {
       body: JSON.stringify(act)
     }).then(res=>{res.json()})
   }
+  
   SetTotal() {
     var tots = 0
     this.state.activity.map(act => {
@@ -77,7 +79,7 @@ render() {
             />
             </main> 
             :
-            <h1>Log In</h1>}
+            <h1>Log In to Start</h1>}
           </>
           }/>
         <Route exact path='/signup' render={({ history }) => 

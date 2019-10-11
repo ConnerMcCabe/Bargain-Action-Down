@@ -11,9 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
 canvas {
- position: absolute;
- z-index: -2;
- width: 100vw;
- height: 100vh;
+  position: absolute;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
+}
+#root { 
+  border-radius: 10px;
+  border-style: groove;
+  border-width: 2px;
+  padding: 30px;
+  margin: 20px;
+  box-shadow: 5px 7px 5px #888888;
 }

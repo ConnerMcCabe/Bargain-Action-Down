@@ -1,5 +1,6 @@
 .NavBar {
   width: 90%;
   background-color: #f9d01c;
-
+  margin-bottom: 0;
+  border-radius: 0;
 }

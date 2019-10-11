@@ -2,11 +2,12 @@ article {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 60vw;
+  width: 30vw;
   height: 5vh;
-  color: #f9d01c;
+  color: #000000;
   margin: 0.1rem;
-  background-color: #000000;
+  border: 2px solid #f5da42;
+  background-color: rgb(244, 244, 244);
 } 
 label {
   display: flex;
@@ -30,6 +31,7 @@ select {
   border: 2px solid #f5da42;
   border-radius: 0;
   outline: none;
+  width: 30vw;
   -webkit-appearance: none;
 }
 
@@ -41,6 +43,7 @@ button {
   color: rgb(0, 0, 0);
   border: none;
   outline: none;
+  height: 5vh;
 }
 button:disabled {
   background-color: lightgrey;
@@ -49,8 +52,11 @@ button:hover {
   color: #f9d01c;
   background-color: #000000;
 }
-.submit
-{
+.submit{
   margin: 0.5rem 0 0 auto;
   padding: 0.4rem;
+}
+article *
+{
+  padding: 0 1vh;
 }
