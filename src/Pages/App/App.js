@@ -30,11 +30,11 @@ class App extends Component {
   }
 
   updateActions = async (act , idx) => {
-   await this.setState(
+    await this.setState(
       {
         activity:[...act]
       });
-     await this.SetTotal();
+      await this.SetTotal();
       return fetch(`/api/updateAction/${idx}`, {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
